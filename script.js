@@ -88,6 +88,8 @@ function Die(audio) {
         }
     }
 
+    clearInterval(time3)
+
     let time = setTimeout(() => {
         location.href = location.href
     }, 1000)
@@ -177,7 +179,7 @@ setInterval(() => {
     Bird.src = images[i]
 }, 100)
 
-setInterval(() => {
+let time3 = setInterval(() => {
     let time = Date.now() - atual
 
     Time.textContent = (time / 1000).toFixed(0)
