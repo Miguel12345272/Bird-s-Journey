@@ -191,6 +191,8 @@ setInterval(() => {
 
 window.addEventListener('touchstart', Jump)
 
+window.addEventListener('click', Jump)
+
 window.addEventListener('keydown', (e) => {
     if (e.code === 'Space') {
         Jump()
