@@ -28,7 +28,7 @@ let tempo = 0
 
 function Jump() {
     if (!lose2) {
-        bottomValue += (birdgravity - (timePipe / 5))
+        bottomValue += (birdgravity - (timePipe - (timePipe / 5)))
         Bird.style.bottom = bottomValue + "px"
 
         let tracks = [
@@ -128,12 +128,12 @@ let collideandgravity  = setInterval(() => {
 let canos = setInterval(() => {
     RightValue += gravity2
 
-    timePipe += 0.05
-
     Cano1.style.right = RightValue + 'px'
     Cano2.style.right = RightValue + 'px'
     if (RightValue >= 700) {
-        RightValue = -50    
+        RightValue = -50
+
+        timePipe += 0.05
 
         random = Math.floor(Math.random() * 325)
 
