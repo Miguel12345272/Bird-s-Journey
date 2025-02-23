@@ -21,6 +21,8 @@ let lose2 = false
 
 let collidepipe = false
 
+let canReset = false
+
 let record = localStorage.getItem("recordTime") || 0
 
 let i = 0;
@@ -45,7 +47,11 @@ function Jump() {
         if (bottomValue > 300) {
             localStorage.setItem('Record', Time.innerHTML)
     
-            location.reload()
+            if (canReset) {
+                canReset = false
+                
+                location.href = location.href
+            }
         }
     }
 }
@@ -64,15 +70,6 @@ function Die(audio) {
             lose2 = true
 
             collidepipe = true
-
-            setTimeout(() => {
-                if (parseInt(Bird.style.bottom) <= 0) {
-                    if (collidepipe) {
-                        bottomValue = 0
-                        lose = true  
-                    }        
-                }
-            })
         }
     } else if (audio == 2) {
         if (!canAudio) {
@@ -91,7 +88,10 @@ function Die(audio) {
     clearInterval(time3)
 
     let time = setTimeout(() => {
-        location.href = location.href
+        if (canReset) {
+            canReset = false
+            location.href = location.href
+        }
     }, 1000)
 }
 
